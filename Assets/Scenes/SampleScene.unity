@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 179689915}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -516,11 +516,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e392535208694e47afd353f3012de8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  jumpHeight: 5
-  baseFallMultiplier: 5
-  terminalVelocity: 5
-  fallAcceleration: 3
+  baseJumpForce: 10
+  baseMoveSpeed: 0
+  maxJumpTime: 0.5
 --- !u!1 &2015382236
 GameObject:
   m_ObjectHideFlags: 0
@@ -577,6 +575,7 @@ GameObject:
   - component: {fileID: 2138282905}
   - component: {fileID: 2138282907}
   - component: {fileID: 2138282906}
+  - component: {fileID: 2138282908}
   m_Layer: 0
   m_Name: Tilemap_Base
   m_TagString: Ground
@@ -1142,6 +1141,27 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!65 &2138282908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2138282904}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 55.11112, y: 48.11112, z: 0}
+  m_Center: {x: -27.500004, y: -18.000002, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
