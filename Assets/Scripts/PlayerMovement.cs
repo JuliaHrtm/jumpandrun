@@ -1,11 +1,11 @@
 using UnityEngine;
 
-public class Movement : MonoBehaviour {
-    public float baseJumpForce = 1f; // Basis Sprungstärke
+public class PlayerMovement : MonoBehaviour {
+    public float baseJumpForce = 10f; // Basis Sprungstärke
     public float baseMoveSpeed = 10f; // Basis Bewegungsgeschwindigkeit
     public float maxJumpTime = 0.3f; // Maximale Sprungzeit
     public float minJumpTime = 0.1f; // Minmale Sprungzeit
-    public float fallAcceleration = 3f; // Fallbeschleunigung
+    public float fallAcceleration = 5f; // Fallbeschleunigung
 
     private bool _onGround; // Bodenkontakt
     private bool _isJumping; // Springt
@@ -33,29 +33,26 @@ public class Movement : MonoBehaviour {
     // Aufruf in festen Zeitintervallen (genutzt für Physik)
     private void FixedUpdate() {
         // Spieler springt
-        if (_isJumping) {
-            // Aktuelle Sprungdauer erhöhen
-            _jumpTime += Time.fixedDeltaTime;
-            // Maximale Sprungdauer bereits überschritten?
-            if (_jumpTime < maxJumpTime) {
-                // Spieler noch höher springen lassen
-                _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, baseJumpForce);
-            }
+        if (!_isJumping) return;
+        // Aktuelle Sprungdauer erhöhen
+        _jumpTime += Time.fixedDeltaTime;
+        // Maximale Sprungdauer bereits überschritten?
+        if (_jumpTime < maxJumpTime) {
+            // Spieler noch höher springen lassen
+            _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, baseJumpForce);
         }
     }
 
     private void StartJump() {
-        if (!_isJumping) {
-            _isJumping = true; // Spieler springt
-            _jumpTime = 0f;
-        }
+        if (_isJumping) return;
+        _isJumping = true; // Spieler springt
+        _jumpTime = 0f;
     }
 
     private void EndJump() {
-        if (_isJumping) {
-            _isJumping = false; // Spieler springt nicht mehr
-            _jumpTime = 0;
-        }
+        if (!_isJumping) return;
+        _isJumping = false; // Spieler springt nicht mehr
+        _jumpTime = 0;
     }
 
     // Aufgerufen, wenn Objekt mit anderem Collider kollidiert
