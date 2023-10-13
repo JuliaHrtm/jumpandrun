@@ -12,22 +12,29 @@ public class PlayerMovement : MonoBehaviour {
     private float _jumpTime; // Sprungzeitpunkt
 
     private Rigidbody2D _rigidbody2D; // Physikkörper des Spielers
+    private Animator _animator; // Animationen des Spielers
+    
+    private static readonly int Speed = Animator.StringToHash("speed");
+    private static readonly int IsJumping = Animator.StringToHash("isJumping");
+    private static readonly int OnGround = Animator.StringToHash("onGround");
 
     // Initialisierung
     private void Start() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         _rigidbody2D.gravityScale = fallAcceleration;
     }
 
     // Update jeden Frame aufgerufen (genutzt für Steuerung)
     private void Update() {
-        // Vorwärtsbewegung
-        _rigidbody2D.velocity = new Vector2(baseMoveSpeed, _rigidbody2D.velocity.y);
+        _rigidbody2D.velocity = new Vector2(baseMoveSpeed, _rigidbody2D.velocity.y); // Vorwärtsbewegung
 
         if (Input.GetButton("Fire1") && _onGround) // Springen, wenn auf Boden und Bildschirmtipp
             StartJump();
         if (!Input.GetButton("Fire1") && _jumpTime > minJumpTime) // Aufhören zu springen, wenn Bildschirm zu lang gehalten oder losgelassen
             EndJump();
+
+        Animate(); // Alle Animationsvariablen updaten
     }
 
     // Aufruf in festen Zeitintervallen (genutzt für Physik)
@@ -40,6 +47,8 @@ public class PlayerMovement : MonoBehaviour {
         if (_jumpTime < maxJumpTime) {
             // Spieler noch höher springen lassen
             _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, baseJumpForce);
+        } else {
+            _isJumping = false;
         }
     }
 
@@ -71,5 +80,11 @@ public class PlayerMovement : MonoBehaviour {
             // Spieler in der Luft
             _onGround = false;
         }
+    }
+
+    private void Animate() {
+        _animator.SetBool(IsJumping, _isJumping);
+        _animator.SetBool(OnGround, _onGround);
+        _animator.SetFloat(Speed, _rigidbody2D.velocity.x);
     }
 }
