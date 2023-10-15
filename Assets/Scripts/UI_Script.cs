@@ -7,4 +7,9 @@ public class UI_Script : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+
+    public void PlayMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
 }
