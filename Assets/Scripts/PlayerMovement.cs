@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
@@ -33,7 +34,10 @@ public class PlayerMovement : MonoBehaviour {
             StartJump();
         if (!Input.GetButton("Fire1") && _jumpTime > minJumpTime) // Aufhören zu springen, wenn Bildschirm zu lang gehalten oder losgelassen
             EndJump();
+    }
 
+    private void LateUpdate()
+    {
         Animate(); // Alle Animationsvariablen updaten
     }
 
