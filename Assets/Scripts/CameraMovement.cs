@@ -9,6 +9,8 @@ public class CameraMovement : MonoBehaviour {
 
     // Wird nach Update aufgerufen
     private void LateUpdate() {
-        transform.position = Vector3.Lerp(transform.position, target.position + offset, smoothing * Time.deltaTime); // Kamera folgt Spieler relativ schnell zur Entfernung
+        // Kamera folgt Spieler relativ schnell zur Entfernung
+        transform.position = Vector3.Lerp(
+            transform.position, target.position + offset, smoothing * Time.deltaTime);
     }
 }
