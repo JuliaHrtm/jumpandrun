@@ -1,8 +1,6 @@
-using System;
 using UnityEngine;
 
 public class CameraMovement : MonoBehaviour {
-
     public float smoothing;
     public Vector3 offset;
     public Transform target;
