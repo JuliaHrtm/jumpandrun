@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
@@ -14,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private Rigidbody2D _rigidbody2D; // Physikkörper des Spielers
     private Animator _animator; // Animationen des Spielers
-    
+
     private static readonly int Speed = Animator.StringToHash("speed");
     private static readonly int IsJumping = Animator.StringToHash("isJumping");
     private static readonly int OnGround = Animator.StringToHash("onGround");
@@ -32,12 +31,12 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetButton("Fire1") && _onGround) // Springen, wenn auf Boden und Bildschirmtipp
             StartJump();
-        if (!Input.GetButton("Fire1") && _jumpTime > minJumpTime) // Aufhören zu springen, wenn Bildschirm zu lang gehalten oder losgelassen
+        if (!Input.GetButton("Fire1") &&
+            _jumpTime > minJumpTime) // Aufhören zu springen, wenn Bildschirm zu lang gehalten oder losgelassen
             EndJump();
     }
 
-    private void LateUpdate()
-    {
+    private void LateUpdate() {
         Animate(); // Alle Animationsvariablen updaten
     }
 
