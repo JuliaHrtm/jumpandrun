@@ -1,15 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class UI_Script : MonoBehaviour
-{
-    public void PlayGame()
-    {
+public class UIScript : MonoBehaviour {
+    public void PlayGame() {
         SceneManager.LoadSceneAsync(1);
     }
 
-    public void PlayMainMenu()
-    {
+    public void PlayMainMenu() {
         SceneManager.LoadSceneAsync(0);
     }
 }

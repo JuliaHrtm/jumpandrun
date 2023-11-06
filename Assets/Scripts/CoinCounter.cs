@@ -1,30 +1,22 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class CoinCounter : MonoBehaviour
-{
-    public static CoinCounter instance;
+public class CoinCounter : MonoBehaviour {
+    public static CoinCounter Instance;
 
-    public TMP_Text CoinText;
-    public int currentCoin = 0;
+    public TMP_Text coinText;
+    public int currentCoin;
 
-    private void Awake()
-    {
-        instance = this;
+    private void Awake() {
+        Instance = this;
     }
 
-    private void Start()
-    {
-        CoinText.text = "Score: " + currentCoin.ToString();
-
+    private void Start() {
+        coinText.text = "Score: " + currentCoin;
     }
 
-    public void IncreaseCoin(int v)
-    {
+    public void IncreaseCoin(int v) {
         currentCoin += v;
-        CoinText.text = "Score: " + currentCoin.ToString();
+        coinText.text = "Score: " + currentCoin;
     }
 }
