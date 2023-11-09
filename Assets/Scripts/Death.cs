@@ -9,6 +9,7 @@ public class Death : MonoBehaviour {
     public GameObject blackBackground;
     public AudioSource audioSource;
     public AudioClip audioClip;
+    
 
     private void Start() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -31,6 +32,6 @@ public class Death : MonoBehaviour {
 
     private IEnumerator LoadDeathScreen() {
         yield return new WaitForSeconds(1);
-        SceneManager.LoadSceneAsync(0);
+        SceneManager.LoadSceneAsync(1);
     }
 }
