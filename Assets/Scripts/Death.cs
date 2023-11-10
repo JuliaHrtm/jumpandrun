@@ -9,7 +9,7 @@ public class Death : MonoBehaviour {
     public GameObject blackBackground;
     public AudioSource audioSource;
     public AudioClip audioClip;
-    
+
 
     private void Start() {
         _rigidbody2D = GetComponent<Rigidbody2D>();
