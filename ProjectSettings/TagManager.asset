@@ -43,12 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Effects
-    uniqueID: 3311111687
-    locked: 0
-  - name: Player
-    uniqueID: 2723513295
-    locked: 0
   - name: Coins
     uniqueID: 2744846625
     locked: 0
